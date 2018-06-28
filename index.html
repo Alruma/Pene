@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="480" height="320"></canvas>
+
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.beginPath();
+ctx.rect(10, 49, 60, 80);
+ctx.fillStyle = "#FF9800";
+ctx.fill();
+ctx.closePath();
+ctx.beginPath();
+ctx.arc(200, 110, 50, 0, Math.PI*2, false);
+ctx.fillStyle = "purple";
+ctx.fill();
+ctx.closePath();
+ctx.beginPath();
+ctx.rect(200, 50, 300, 10);
+ctx.strokeStyle = "rgba(198, 24, 250, 0.5)";
+ctx.stroke();
+ctx.closePath();
+
+
+
+
+
+</script>
+
+</body>
+</html>
