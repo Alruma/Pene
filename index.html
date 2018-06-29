@@ -10,16 +10,19 @@
 </head>
 <body>
 
+  
 <canvas id="myCanvas" width="480" height="320"></canvas>
 
+
 <script>
-var canvas = document.getElementById("myCanvas");
+    const angulo = Math.random() * Math.PI/4 + Math.PI/4;
+    var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
     var ballRadius = 10;
     var x = canvas.width/2;
     var y = canvas.height-30;
-    var dx = 10;
-    var dy = -7;
+    var dx = Math.cos(angulo)*7;
+    var dy = Math.sin(angulo)*-7;
     var paddleHeight = 10;
     var paddleWidth = 75;
     var paddleX = (canvas.width-paddleWidth)/2;
@@ -34,8 +37,10 @@ var canvas = document.getElementById("myCanvas");
     var brickOffsetLeft = 30;
     var score = 0;
     var lives = 3;
-    
     var bricks = [];
+    var dead = false;
+    var cambio = false;
+    
     for(var c=0; c<brickColumnCount; c++) {
       bricks[c] = [];
       for(var r=0; r<brickRowCount; r++) {
@@ -46,6 +51,7 @@ var canvas = document.getElementById("myCanvas");
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
     document.addEventListener("mousemove", mouseMoveHandler, false);
+    document.addEventListener("click", mouseClickHandler, false);
     
     function keyDownHandler(e) {
       if(e.keyCode == 39) {
@@ -67,6 +73,18 @@ var canvas = document.getElementById("myCanvas");
       var relativeX = e.clientX - canvas.offsetLeft;
       if(relativeX > 0 && relativeX < canvas.width) {
         paddleX = relativeX - paddleWidth/2;
+      }
+    }
+    function mouseClickHandler(e) {
+        const angulo = Math.random() * Math.PI/4 + Math.PI/4; 
+      if (dead) {
+        click = true;
+        x = canvas.width/2;
+        y = canvas.height-30;
+        dx = Math.cos(angulo)*7 ;
+        dy = Math.sin(angulo)*-7 ;
+        paddleX = (canvas.width-paddleWidth)/2;
+        dead = false;
       }
     }
     function collisionDetection() {
@@ -129,7 +147,7 @@ var canvas = document.getElementById("myCanvas");
       ctx.fillStyle = "#0095DD";
       ctx.fillText("Lives: "+lives, canvas.width-65, 20);
     }
-    
+   
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawBricks();
@@ -150,20 +168,19 @@ var canvas = document.getElementById("myCanvas");
           dy = -dy;
         }
         else {
+          dead = true;
           lives--;
+            x = canvas.width/2;
+            y = canvas.height-50;
+            dx = 0;
+            dy = 0;
           if(!lives) {
             alert("Unlucky Busta");
             document.location.reload();
-          }
-          else {
-            x = canvas.width/2;
-            y = canvas.height-30;
-            dx = 5;
-            dy = -6 ;
-            paddleX = (canvas.width-paddleWidth)/2;
-          }
         }
       }
+    }
+    
     
       if(rightPressed && paddleX < canvas.width-paddleWidth) {
         paddleX += 10;
