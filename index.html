@@ -18,13 +18,13 @@ var ctx = canvas.getContext("2d");
 var ballRadius = 10;
 var x = canvas.width/2;
 var y = canvas.height-30;
-var dx = 2;
-var dy = -2;
+var dx = 20;
+var dy = -20;
 
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "#ff00ff";
+    ctx.fillStyle = "#00ff00";
     ctx.fill();
     ctx.closePath();
 }
