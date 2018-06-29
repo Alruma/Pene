@@ -36,8 +36,6 @@
     var brickOffsetLeft = 30;
     var score = 0;
     var lives = 3;
-    var mouseClick = false;
-    var mouseClickUp = false;
     var bricks = [];
     var dead = false;
     var cambio = false;
@@ -77,16 +75,15 @@
       }
     }
     function mouseClickHandler(e) {
-        alert("xd");
-        if(e.keyCode == 1){
-            click = true;
-            x = canvas.width/2;
-            y = canvas.height-30;
-            dx = 5;
-            dy = -6 ;
-            paddleX = (canvas.width-paddleWidth)/2;
-            dead = false;
-        }
+      if (dead) {
+        click = true;
+        x = canvas.width/2;
+        y = canvas.height-30;
+        dx = 5;
+        dy = -6 ;
+        paddleX = (canvas.width-paddleWidth)/2;
+        dead = false;
+      }
     }
 
     function collisionDetection() {
