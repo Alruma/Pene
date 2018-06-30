@@ -40,7 +40,6 @@
     var bricks = [];
     var dead = false;
     var cambio = false;
-    var el = document.getElementsByTagName("canvas")[0];
 
     for(var c=0; c<brickColumnCount; c++) {
       bricks[c] = [];
@@ -54,11 +53,11 @@
     document.addEventListener("mousemove", mouseMoveHandler, false);
     document.addEventListener("click", mouseClickHandler, false);
     document.addEventListener("touchmove", handleMove, false);
-          el.addEventListener("touchstart", handleStart, false);
-          el.addEventListener("touchend", handleEnd, false);
-          el.addEventListener("touchcancel", handleCancel, false);
-          el.addEventListener("touchleave", handleLeave, false);
-          el.addEventListener("touchmove", handleMove, false);
+    document.addEventListener("touchstart", handleStart, false);
+    document.addEventListener("touchend", handleEnd, false);
+    document.addEventListener("touchcancel", handleCancel, false);
+    document.addEventListener("touchleave", handleLeave, false);
+    document.addEventListener("touchmove", handleMove, false);
 
     function keyDownHandler(e) {
       if(e.keyCode == 39) {
