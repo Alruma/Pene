@@ -40,7 +40,8 @@
     var bricks = [];
     var dead = false;
     var cambio = false;
-    
+    var el = document.getElementsByTagName("canvas")[0];
+
     for(var c=0; c<brickColumnCount; c++) {
       bricks[c] = [];
       for(let r=0; r<brickRowCount; r++) {
@@ -53,7 +54,11 @@
     document.addEventListener("mousemove", mouseMoveHandler, false);
     document.addEventListener("click", mouseClickHandler, false);
     document.addEventListener("touchmove", handleMove, false);
-
+          el.addEventListener("touchstart", handleStart, false);
+          el.addEventListener("touchend", handleEnd, false);
+          el.addEventListener("touchcancel", handleCancel, false);
+          el.addEventListener("touchleave", handleLeave, false);
+          el.addEventListener("touchmove", handleMove, false);
 
     function keyDownHandler(e) {
       if(e.keyCode == 39) {
@@ -77,14 +82,8 @@
         paddleX = relativeX - paddleWidth/2;
       }
     }
-    function startup() {
-      var el = document.getElementsByTagName("canvas")[0];
-          el.addEventListener("touchstart", handleStart, false);
-          el.addEventListener("touchend", handleEnd, false);
-          el.addEventListener("touchcancel", handleCancel, false);
-          el.addEventListener("touchleave", handleLeave, false);
-          el.addEventListener("touchmove", handleMove, false);
-        }
+
+
     function handleStart(evt) {
       evt.preventDefault();
       var el = document.getElementsByTagName("canvas")[0];
