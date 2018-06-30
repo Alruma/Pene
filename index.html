@@ -92,7 +92,7 @@
       for(let c=0; c<brickColumnCount; c++) {
         for(let r=0; r<brickRowCount; r++) {
           let b = bricks[c][r];
-          if(b.status == 1) {
+          if(b.status >= 1) {
             if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
               dy = -dy;
               b.status -= 1;
@@ -103,18 +103,6 @@
               }
             }
           }
-          if(b.status == 3){
-            if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
-              dy = -dy;
-              b.status -= 1;
-              score++;
-          }
-        }
-        if(b.status == 2){
-          if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
-              dy = -dy;
-              b.status -= 1;
-              score++;
         }
       }
     }
@@ -136,7 +124,7 @@
     function drawBricks() {
       for(let c=0; c<brickColumnCount; c++) {
         for(let r=0; r<brickRowCount; r++) {
-          if(bricks[c][r].status == 1) {
+          if(bricks[c][r].status >= 1) {
             let brickX = (r*(brickWidth+brickPadding))+brickOffsetLeft;
             let brickY = (c*(brickHeight+brickPadding))+brickOffsetTop;
             bricks[c][r].x = brickX;
