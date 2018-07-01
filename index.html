@@ -76,6 +76,15 @@
         paddleX = relativeX - paddleWidth/2;
       }
     }
+
+    function mouseMoveHandler(evt) {
+      const primerDedo = evt.touches[0];
+      let relativeX = primerDedo.clientX - canvas.offsetLeft;
+      if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth/2;
+      }
+    }
+
     function mouseClickHandler(e) {
         const angulo = Math.random() * Math.PI/4 + Math.PI/4; 
       if (dead) {
