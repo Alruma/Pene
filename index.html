@@ -52,7 +52,7 @@
     document.addEventListener("keyup", keyUpHandler, false);
     document.addEventListener("mousemove", mouseMoveHandler, false);
     document.addEventListener("click", mouseClickHandler, false);
-
+    document.addEventListener("touchmove", handleMove, false);
 
     function keyDownHandler(e) {
       if(e.keyCode == 39) {
@@ -76,6 +76,16 @@
         paddleX = relativeX - paddleWidth/2;
       }
     }
+
+
+    function handleMove(evt){
+      const primerDedo = evt.touches[0];
+      let relativeX = primerDedo.clientX - canvas.offsetLeft;
+      if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth/2;
+      }
+    }
+
     function mouseClickHandler(e) {
         const angulo = Math.random() * Math.PI/4 + Math.PI/4; 
       if (dead) {
