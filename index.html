@@ -32,6 +32,7 @@
     var paddleHeight = 10;
     var paddleWidth = 75;
     var paddleX = (canvas.width-paddleWidth)/2;
+    const paddleY = canvas.height-paddleHeight;
     var rightPressed = false;
     var leftPressed = false;
     var brickRowCount = 5;
@@ -181,9 +182,11 @@
       if(y + dy < ballRadius) {
         dy = -dy;
       }
-      else if(y + dy > canvas.height-ballRadius) {
+      else if(y + dy > paddleY - ballRadius) {
         if(x > paddleX && x < paddleX + paddleWidth) {
-          dy = -dy;
+          const hipotenusa = Math.hypot((x - paddleX-paddleWidth/2), y - paddleY);
+          dy = ((y - paddleY) / hipotenusa)*7;
+          dx = ((x - paddleX - paddleWidth/2) / hipotenusa)*7;
         }
         else {
           dead = true;
