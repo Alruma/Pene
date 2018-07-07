@@ -51,9 +51,9 @@ export function physics(Juego) {
 
 
   if (Juego.rightPressed && Juego.paddleX < Juego.canvas.width - Juego.paddleWidth) {
-    Juego.paddleX += 0.05 * Juego.canvas.width;
+    Juego.paddleX += 0.02 * Juego.canvas.width;
   } else if (Juego.leftPressed && Juego.paddleX > 0) {
-    Juego.paddleX -= 0.05 * Juego.canvas.width;
+    Juego.paddleX -= 0.02 * Juego.canvas.width;
   }
 
   Juego.x += Juego.dx;
